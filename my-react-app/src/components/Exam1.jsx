@@ -47,7 +47,9 @@ class Exam1 extends Component {
         <h1>Count : {this.state.count}</h1>
         <button onClick={this.handleClick}>증가버튼</button>
 
-        <h2>부모로 부터 전달받은 값 : {this.props.key}</h2>
+        <h2>
+          부모로 부터 전달받은 값 : {this.props.ke} {this.props.test}
+        </h2>
       </div>
     );
   }
