@@ -6,6 +6,7 @@ import Exam1 from "./components/Exam1";
 import Exam2 from "./components/Exam2";
 import Exam3 from "./components/Exam3";
 import Exam4 from "./components/Exam4";
+import Exam5 from "./components/Exam5";
 
 function App() {
   // 상태(state)
@@ -27,7 +28,8 @@ function App() {
     //   {showExam && <Exam2 ke="한국어" test="world" />}
     // </>
     // <Exam3 />
-    <Exam4 />
+    // <Exam4 />
+    <Exam5 />
   );
 }
 
