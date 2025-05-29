@@ -92,21 +92,27 @@ export default function Statistics() {
     return (
       <div>
         <section className="statistics-section">
-          <h2>신규 가입 회원 ({newMemberInWeekData.newMemberCount}명)</h2>
+          <h2>신규 가입 회원 ({newMemberInWeekData.length}명)</h2>
           <h3>[7일 이내 가입 회원]</h3>
           <table>
-            <tr>
-              <th>회원번호</th>
-              <th>이메일</th>
-              <th>닉네임</th>
-              <th>가입일</th>
-            </tr>
-            <tr>
-              <td>{newMemberInWeekData.memberNo}</td>
-              <td>{newMemberInWeekData.memberEmail}</td>
-              <td>{newMemberInWeekData.memberNickname}</td>
-              <td>{newMemberInWeekData.enrollDate}</td>
-            </tr>
+            <thead>
+              <tr>
+                <th>회원번호</th>
+                <th>이메일</th>
+                <th>닉네임</th>
+                <th>가입일</th>
+              </tr>
+            </thead>
+            <tbody>
+              {newMemberInWeekData.map((member) => (
+                <tr key={member.memberNo}>
+                  <td>{member.memberNo}</td>
+                  <td>{member.memberEmail}</td>
+                  <td>{member.memberNickname}</td>
+                  <td>{member.enrollDate}</td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </section>
 
