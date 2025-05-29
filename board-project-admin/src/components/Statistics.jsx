@@ -5,7 +5,22 @@ export default function Statistics() {
   const [readCountData, setReadCountData] = useState(null);
   const [likeCountData, setLikeCountData] = useState(null);
   const [commentCountData, setCommentCountData] = useState(null);
+  const [newMemberInWeekData, setNewMemberInWeekData] = useState(null);
   const [isLoading, setIsLoding] = useState(true);
+
+  // 7일 이내 가입한 회원 조회
+  const getNewMemberInWeekData = async () => {
+    try {
+      const resp = await axiosApi.get("admin/newMemberInWeekData");
+      console.log(resp.data);
+
+      if (resp.status === 200) {
+        setNewMemberInWeekData(resp.data);
+      }
+    } catch (error) {
+      console.log("멤버데이터 조회 중 예외 발생", error);
+    }
+  };
 
   // 최대 조회 수 게시글 조회
   const getMaxReadCount = async () => {
@@ -55,6 +70,7 @@ export default function Statistics() {
     getMaxReadCount();
     getMaxLikeCount();
     getMaxCommentCount();
+    getNewMemberInWeekData();
   }, []); // 의존성 배열이 비어있기 때문에 1번만 실행
 
   // readCountData, likeCountData, commentCountData에 변화가 감지될 때
@@ -63,11 +79,12 @@ export default function Statistics() {
     if (
       readCountData != null &&
       likeCountData != null &&
-      commentCountData != null
+      commentCountData != null &&
+      newMemberInWeekData != null
     ) {
       setIsLoding(false);
     }
-  }, [readCountData, likeCountData, commentCountData]);
+  }, [readCountData, likeCountData, commentCountData, newMemberInWeekData]);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -75,20 +92,20 @@ export default function Statistics() {
     return (
       <div>
         <section className="statistics-section">
-          <h2>신규 가입 회원</h2>
+          <h2>신규 가입 회원 ({newMemberInWeekData.newMemberCount}명)</h2>
           <h3>[7일 이내 가입 회원]</h3>
           <table>
             <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
+              <th>회원번호</th>
+              <th>이메일</th>
+              <th>닉네임</th>
+              <th>가입일</th>
             </tr>
             <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td>{newMemberInWeekData.memberNo}</td>
+              <td>{newMemberInWeekData.memberEmail}</td>
+              <td>{newMemberInWeekData.memberNickname}</td>
+              <td>{newMemberInWeekData.enrollDate}</td>
             </tr>
           </table>
         </section>
