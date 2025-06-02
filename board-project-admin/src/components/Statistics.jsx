@@ -11,7 +11,7 @@ export default function Statistics() {
   // 7일 이내 가입한 회원 조회
   const getNewMemberInWeekData = async () => {
     try {
-      const resp = await axiosApi.get("admin/newMemberInWeekData");
+      const resp = await axiosApi.get("/admin/newMemberInWeekData");
       console.log(resp.data);
 
       if (resp.status === 200) {
@@ -25,7 +25,7 @@ export default function Statistics() {
   // 최대 조회 수 게시글 조회
   const getMaxReadCount = async () => {
     try {
-      const resp = await axiosApi.get("admin/maxReadCount");
+      const resp = await axiosApi.get("/admin/maxReadCount");
       console.log(resp.data);
 
       if (resp.status === 200) {
@@ -39,7 +39,7 @@ export default function Statistics() {
   // 최대 좋아요수 게시글 조회
   const getMaxLikeCount = async () => {
     try {
-      const resp = await axiosApi.get("admin/maxLikeCount");
+      const resp = await axiosApi.get("/admin/maxLikeCount");
       console.log(resp.data);
 
       if (resp.status === 200) {
@@ -94,7 +94,7 @@ export default function Statistics() {
         <section className="statistics-section">
           <h2>신규 가입 회원 ({newMemberInWeekData.length}명)</h2>
           <h3>[7일 이내 가입 회원]</h3>
-          <table>
+          <table border={1}>
             <thead>
               <tr>
                 <th>회원번호</th>
