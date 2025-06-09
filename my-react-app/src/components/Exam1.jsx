@@ -16,7 +16,7 @@ class Exam1 extends Component {
 
   // 생명주기 코드
 
-  // 컴포넌트가 처음 화면에 나타났을 때
+  // 컴포넌트가 처음 화면에 나타났을 때 x
   componentDidMount() {
     console.log("componentDidMount : 마운트 완료");
   }
