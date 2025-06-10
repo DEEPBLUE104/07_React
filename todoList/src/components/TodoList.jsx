@@ -22,15 +22,19 @@ export default function TodoList() {
       const resp = await axiosApi.put("/admin/YNhandler", {
         todoNo: todo.todoNo,
       });
+      selectTodoList();
     } catch (error) {
       console.log("yn데이터 오류");
     }
   };
 
   // 삭제
-  const deleteTodo = async (todo) => {
+  const deleteTodo = async (popupData) => {
     try {
-      const resp = await axiosApi.delete("/admin/deleteTodo");
+      const resp = await axiosApi.delete("/admin/deleteTodo", {
+        data: { todoNo: popupData.todoNo },
+      });
+
       console.log("삭제성공");
       selectTodoList();
     } catch (error) {
@@ -156,6 +160,9 @@ export default function TodoList() {
               </td>
               <td>{todo.complete ? "Y" : "N"}</td>
               <td>{todo.regDate}</td>
+              <td>
+                <button onClick={() => YNhandler(todo)}>완료 수정</button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -182,7 +189,7 @@ export default function TodoList() {
             <div>{popupData.todoContent}</div>
           </div>
 
-          <button onClick={deleteTodo}>삭제</button>
+          <button onClick={() => deleteTodo(popupData)}>삭제</button>
         </div>
       )}
     </div>
