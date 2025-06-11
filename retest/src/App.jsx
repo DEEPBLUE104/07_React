@@ -8,7 +8,6 @@ function App() {
     { name: "유저3", age: 30, gender: "남자", phone: "010-3784-2834" },
   ]);
 
-  // 한국어가 아이냥...
   return (
     <div className="App">
       <h1>회원 정보 출력</h1>
