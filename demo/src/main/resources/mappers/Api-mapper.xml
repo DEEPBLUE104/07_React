@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="edu.kh.example.todoList_React.todoList.mapper.ApiMapper">
+
+	<!-- 2. 저장된 시설 전체 조회 -->
+	<select id="getAllServices"
+		resultType="edu.kh.example.todoList_React.todoList.model.dto.ApiDto">
+		SELECT * FROM API WHERE SERVICE_NO = 1
+	</select>
+
+</mapper>
