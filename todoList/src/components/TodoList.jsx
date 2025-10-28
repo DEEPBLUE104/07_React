@@ -5,7 +5,7 @@ import "/src/TodoList.css";
 
 export default function TodoList() {
   const [todoListForm, setTodoListForm] = useState([]);
-  // 해당 목록은 list 하나로 받아와야 한다..
+  // 해당 목록은 list 하나로 받아와야 한다.
   const [form, setForm] = useState({
     title: "",
     content: "",
